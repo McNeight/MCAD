@@ -1,24 +1,27 @@
-/*
- * Basic units.
- * 
- * Originally by Hans Häggström, 2010.
- * Dual licenced under Creative Commons Attribution-Share Alike 3.0 and LGPL2 or later
- */
+"""
+Basic units.
+
+Originally by Hans Häggström, 2010.
+Dual licenced under Creative Commons Attribution-Share Alike 3.0 and LGPL2 or later
+"""
+
+import imp
+imp.load_source("constants.scad", "constants.scad")
+from constants.scad import *
+
+mm = 1
+cm = 10 * mm
+dm = 100 * mm
+m = 1000 * mm
+inch = mm_per_inch * mm
+
+M3 = 3*mm
+M4 = 4*mm
+M5 = 5*mm
+M6 = 6*mm
+M8 = 8*mm
 
 
-mm = 1;
-cm = 10 * mm;
-dm = 100 * mm;
-m = 1000 * mm;
-inch = 25.4 * mm;
-
-M3 = 3*mm;
-M4 = 4*mm;
-M5 = 5*mm;
-M6 = 6*mm;
-M8 = 8*mm;
-
-
-// When a small distance is needed to overlap shapes for boolean cutting, etc.
-epsilon = 0.01*mm;
+# When a small distance is needed to overlap shapes for boolean cutting, etc.
+epsilon = 0.01*mm
 

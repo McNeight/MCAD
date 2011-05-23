@@ -1,6 +1,8 @@
-// MIT license
+# MIT license
 
-include <constants.scad>
+import imp
+imp.load_source("constants.scad", "constants.scad")
+from constants.scad import *
 
-function deg(angle) = 360*angle/TAU;
+deg = lambda angle: 360*angle/TAU
 
