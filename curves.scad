@@ -1,13 +1,15 @@
+# -*- coding: utf-8 -*-
+
 # Parametric curves, to be used as paths
 # Licensed under the MIT license.
 # © 2010 by Elmo Mäntynen
 
 import imp
-imp.load_source("constants.scad", "constants.scad")
-imp.load_source("math.scad", "math.scad")
+imp.load_source("constantsscad", "constants.scad")
+imp.load_source("mathscad", "math.scad")
 
-from constants.scad import *
-from math.scad import *
+from constantsscad import *
+from mathscad import *
 from math import cos, sin
 
 """

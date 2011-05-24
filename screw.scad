@@ -1,64 +1,61 @@
-// Parametric screw-like things (ball screws, augers)
-// License: GNU LGPL 2.1 or later.
-// © 2010 by Elmo Mäntynen
+# -*- coding: utf-8 -*-
 
-include <curves.scad>
+# Parametric screw-like things (ball screws, augers)
+# License: GNU LGPL 2.1 or later.
+# © 2010 by Elmo Mäntynen
 
-/* common screw parameter
+import imp
+imp.load_source("curvesscad", "curves.scad")
+from curvesscad import *
+
+"""
+common screw parameters
 length
 pitch = length/rotations: the distance between the turns of the thread
 outside_diameter
 inner_diameter: thickness of the shaft
-*/
+"""
 
-//Uncomment to see examples
-//test_auger();
-//test_ball_groove();
-//test_ball_groove2();
-//test_ball_screw();
+from openscad import *
 
-module helix(pitch, length, slices=500){
-    rotations = length/pitch;
-    linear_extrude(height=length, center=false, convexity=10, twist=360*rotations, slices=slices, $fn=100)
-        child(0);
-}
+def helix(pitch, length, obj, slices=500):
+    rotations = length/pitch
+    return linear_extrude(h=length, twist=360*rotations, convexity=10, slices=slices, center=False, child=obj)
 
-module auger(pitch, length, outside_diameter, inner_diameter) {
-    union(){
-        helix(pitch, length)
-        polygon(points=[[10,10],[100,1],[100,-1],[10,-10]], paths=[[0,1,2,3]]);
-        cylinder(h=length, r=20);
-    }
-}
-
-module test_auger(){translate([300, 0, 0]) auger(100, 300);}
-
-
-module ball_groove(pitch, length, diameter, ball_radius=10) {
-    helix(pitch, length, slices=100)
-        translate([diameter, 0, 0])
-        circle(r = ball_radius);
-}
-
-module test_ball_groove(){ translate([0, 300, 0]) ball_groove(100, 300, 10);}
-
-module ball_groove2(pitch, length, diameter, ball_radius, slices=200){
-    rotations = length/pitch;
-    radius=diameter/2;
+def auger(pitch, length):
+    return union([
+        helix(pitch, length, polygon([[10,10],[100,1],[100,-1],[10,-10]], [[0,1,2,3]])),
+        cylinder(length, 20)
+    ])
+ 
+def test_auger():
+    return translate([300, 0, 0], auger(100, 300))
+ 
+def ball_groove(pitch, length, diameter, ball_radius=10):
+    return union([
+        helix(pitch, length, translate([diameter, 0, 0], circle(ball_radius)), slices=100)
+    ])
+ 
+def test_ball_groove():
+    return translate([0, 300, 0], ball_groove(100, 300, 10))
+ 
+def ball_groove2(pitch, length, diameter, ball_radius, slices=200):
+    rotations = length/pitch
+    radius=diameter/2
     offset = length/slices;
-    union(){
-        for (i = [0:slices]) {
-            assign (z = i*offset){
-                translate(helix_curve(pitch, radius, z)) sphere(ball_radius, $fa=5, $fs=1);
-            }
-        }
-    }
-}
+    result = []
+    for i in range(0, slices):
+        z = i*offset
+        result += [
+            translate(helix_curve(pitch, radius, z), 
+                sphere(ball_radius))
+        ]
+    return union(result)
 
-module test_ball_groove2(){translate([0, 0, 0]) ball_groove2(100, 300, 100, 10);}
+def test_ball_groove2():
+    return translate([0, 0, 0], ball_groove2(100, 300, 100, 10))
 
-module ball_screw(pitch, length, bearing_radius=2) {
-
-}
-
-module test_ball_screw(){}
+# Uncomment to see examples
+#openscad.result = test_auger()
+#openscad.result = test_ball_groove()
+#openscad.result = test_ball_groove2()

@@ -51,5 +51,4 @@ def roundedBox(size, radius, sidesonly):
   return union(result)
 
 # EXAMPLE USAGE:
-openscad.result = roundedBox(array([20, 30, 40]), float(5), False)
-#openscad.result = sphere(10)
+#openscad.result = roundedBox(array([20, 30, 40]), float(5), False)

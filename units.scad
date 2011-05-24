@@ -6,8 +6,8 @@ Dual licenced under Creative Commons Attribution-Share Alike 3.0 and LGPL2 or la
 """
 
 import imp
-imp.load_source("constants.scad", "constants.scad")
-from constants.scad import *
+imp.load_source("constantsscad", "constants.scad")
+from constantsscad import *
 
 mm = 1
 cm = 10 * mm

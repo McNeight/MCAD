@@ -57,4 +57,4 @@ def test_triangles():
         )]
     return union(result)
 
-openscad.result = test_triangles()
+#openscad.result = test_triangles()
