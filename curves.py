@@ -4,12 +4,8 @@
 # Licensed under the MIT license.
 # © 2010 by Elmo Mäntynen
 
-import imp
-imp.load_source("constantsscad", "constants.scad")
-imp.load_source("mathscad", "math.scad")
-
-from constantsscad import *
-from mathscad import *
+from constants import *
+from mcadmath import *
 from math import cos, sin
 
 """

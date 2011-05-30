@@ -4,9 +4,7 @@
 # License: GNU LGPL 2.1 or later.
 # © 2010 by Elmo Mäntynen
 
-import imp
-imp.load_source("curvesscad", "curves.scad")
-from curvesscad import *
+from curves import *
 
 """
 common screw parameters
