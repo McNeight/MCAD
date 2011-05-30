@@ -1,9 +1,10 @@
-# MIT license
+// MIT license
 
-# TAU=2*PI, see http://tauday.com/
-TAU = 6.2831853071
-PI = TAU/2
+from math import pi
 
-# translates a imperial measurement in inches to meters
-mm_per_inch = 25.4
+PI = pi
+TAU = 2 * pi; //2*PI, see http://tauday.com/
+
+// translates a imperial measurement in inches to meters
+mm_per_inch = 25.4;
 
