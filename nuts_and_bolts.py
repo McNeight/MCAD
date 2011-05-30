@@ -9,8 +9,8 @@ from openscad import *
 
 
 
-MM = "mm";
-INCH = "inch"; #Not yet supported
+MM = "mm"
+INCH = "inch" #Not yet supported
 
 #Based on: http://www.roymech.co.uk/Useful_Tables/Screws/Hex_Screws.htm
 METRIC_NUT_AC_WIDTHS = [
