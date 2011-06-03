@@ -173,8 +173,8 @@ def boltHole(size, length, units=MM, tolerance = +0.0001, proj = -1):
 		])
 
 
-"""
-def testNutsAndBolts():
+
+def test_NutsAndBolts():
 	ofn = openscad.fn
 	openscad.fn = 360
 	t = union([
@@ -184,5 +184,4 @@ def testNutsAndBolts():
 	openscad.fn = ofn
 	return t
 
-openscad.result = testNutsAndBolts()
-"""
+#openscad.result = test_NutsAndBolts()
