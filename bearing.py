@@ -94,5 +94,5 @@ def test_bearing_hole():
 	])
 
 # Example, uncomment to view
-#openscad.result = test_bearing()
-#openscad.result = test_bearing_hole()
+#assemble(test_bearing())
+#assemble(test_bearing_hole())

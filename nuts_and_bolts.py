@@ -184,4 +184,4 @@ def test_NutsAndBolts():
 	openscad.fn = ofn
 	return t
 
-#openscad.result = test_NutsAndBolts()
+#assemble(test_NutsAndBolts())

@@ -53,4 +53,4 @@ def colorTest(col, row=0, c=0):
     return color(col, translate([row * 30,c*30,0], sphere(10)))
 
 # Example, uncomment to view
-#openscad.result = color_demo()
+#assemble(color_demo())

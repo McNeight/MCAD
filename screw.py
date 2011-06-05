@@ -54,6 +54,6 @@ def test_ball_groove2():
     return translate([0, 0, 0], ball_groove2(100, 300, 100, 10))
 
 # Uncomment to see examples
-#openscad.result = test_auger()
-#openscad.result = test_ball_groove()
-#openscad.result = test_ball_groove2()
+#assemble(test_auger())
+#assemble(test_ball_groove())
+#assemble(test_ball_groove2())

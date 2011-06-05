@@ -33,4 +33,4 @@ def test_teardrop():
 	])
 
 
-#openscad.result = test_teardrop()
+#assemble(test_teardrop())

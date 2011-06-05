@@ -57,4 +57,4 @@ def test_triangles():
         )]
     return union(result)
 
-#openscad.result = test_triangles()
+#assemble(test_triangles())
