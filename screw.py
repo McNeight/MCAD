@@ -54,6 +54,8 @@ def test_ball_groove2():
     return translate([0, 0, 0], ball_groove2(100, 300, 100, 10))
 
 # Uncomment to see examples
-#assemble(test_auger())
-#assemble(test_ball_groove())
-#assemble(test_ball_groove2())
+assemble(union([
+#	test_auger(),
+#	test_ball_groove(),
+#	test_ball_groove2()
+]))
