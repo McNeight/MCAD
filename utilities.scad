@@ -1,14 +1,14 @@
 /*
  * Utility functions.
- * 
+ *
  * Originally by Hans Häggström, 2010.
  * Dual licenced under Creative Commons Attribution-Share Alike 3.0 and LGPL2 or later
  */
 
-<units.scad>
+include <lib/mcad/units.scad>
 
-function distance(a, b) = sqrt( (a[0] - b[0])*(a[0] - b[0]) + 
-                                (a[1] - b[1])*(a[1] - b[1]) + 
+function distance(a, b) = sqrt( (a[0] - b[0])*(a[0] - b[0]) +
+                                (a[1] - b[1])*(a[1] - b[1]) +
                                 (a[2] - b[2])*(a[2] - b[2]) );
 
 function length2(a) = sqrt( a[0]*a[0] + a[1]*a[1] );
@@ -45,9 +45,9 @@ module fromTo(from=[0,0,0], to=[1*m,0,0], size=[1*cm, 1*cm], align=[CENTER, CENT
 
     color(material)
       translate(from)
-        rotate(angle) 
+        rotate(angle)
           translate( [ -endCaps[0]*size[0] - endExtras[0], size[0]*(-0.5-align[0]), size[1]*(-0.5+align[1]) ] )
-            rotate(rotation) 
+            rotate(rotation)
               scale([length, size[0], size[1]]) child();
   }
 }

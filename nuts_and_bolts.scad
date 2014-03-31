@@ -2,7 +2,7 @@
 
 //testNutsAndBolts();
 
-module testNutsAndBolts()
+module SKIPtestNutsAndBolts()
 {
 	$fn = 360;
 	translate([0,15])nutHole(3, proj=2);
@@ -13,7 +13,7 @@ MM = "mm";
 INCH = "inch"; //Not yet supported
 
 //Based on: http://www.roymech.co.uk/Useful_Tables/Screws/Hex_Screws.htm
-METRIC_NUT_AC_WIDTHS = 
+METRIC_NUT_AC_WIDTHS =
 [
 	-1, //0 index is not used but reduces computation
 	-1,
@@ -94,7 +94,7 @@ METRIC_NUT_THICKNESS =
 	29.00//m36
 ];
 
-COURSE_METRIC_BOLT_MAJOR_THREAD_DIAMETERS = 
+COURSE_METRIC_BOLT_MAJOR_THREAD_DIAMETERS =
 [//based on max values
 	-1, //0 index is not used but reduces computation
 	-1,
@@ -161,12 +161,13 @@ module boltHole(size, units=MM, length, tolerance = +0.0001, proj = -1)
 //TODO: proper screw cap values
 	capHeight = METRIC_NUT_THICKNESS[size]+tolerance; //METRIC_BOLT_CAP_HEIGHTS[size]+tolerance;
 	capRadius = METRIC_NUT_AC_WIDTHS[size]/2+tolerance; //METRIC_BOLT_CAP_RADIUS[size]+tolerance;
-	
+
 	if (proj == -1)
-	{
+	{ union() {
 	translate([0, 0, -capHeight])
-		cylinder(r= capRadius, h=capHeight);
+		cylinder(r= capRadius, h=capHeight+tolerance);
 	cylinder(r = radius, h = length);
+	}
 	}
 	if (proj == 1)
 	{
