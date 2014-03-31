@@ -3,6 +3,7 @@ from subprocess import Popen, PIPE
 
 mod_re = (r"\bmodule\s+(", r")\s*\(\s*")
 func_re = (r"\bfunction\s+(", r")\s*\(")
+pydef_re = (r"\bdef\s+(", r")\s*\(")
 
 def extract_definitions(fpath, name_re=r"\w+", def_re=""):
     regex = name_re.join(def_re)
@@ -15,22 +16,24 @@ def extract_mod_names(fpath, name_re=r"\w+"):
 def extract_func_names(fpath, name_re=r"\w+"):
     return extract_definitions(fpath, name_re=name_re, def_re=func_re)
 
+def extract_def_names(fpath, name_re=r"\w+"):
+    return extract_definitions(fpath, name_re=name_re, def_re=pydef_re)
+
 def collect_test_modules(dirpath=None):
     dirpath = dirpath or py.path.local("./")
     print "Collecting openscad test module names"
 
     test_files = {}
-    for fpath in dirpath.visit('*.scad'):
-        #print fpath
-        modules = extract_mod_names(fpath, r"test\w*")
-        #functions = extract_func_names(fpath, r"test\w*")
-        test_files[fpath] = modules
+    for fpath in dirpath.visit('*.py'):
+	if not fpath.basename in ['openscadpy_testing.py', 'openscadpy_utils.py', 'test_docs.py', 'test_mcadpy.py']:
+	        defs = extract_def_names(fpath, r"test\w*")
+	        test_files[fpath] = defs
     return test_files
 
 class Timeout(Exception): pass
 
-def call_openscad(path, stlpath, timeout=5):
-    command = ['openscad', '-s', str(stlpath),  str(path)]
+def call_openscad(path, stlpath, timeout=35):
+    command = ['openscadpy', '-s', str(stlpath),  str(path)]
     print command
     if timeout:
         try:

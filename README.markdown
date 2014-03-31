@@ -10,8 +10,8 @@ See http://creativecommons.org/licenses/LGPL/2.1/ or the included file, lgpl-2.1
 
 ## Usage ##
 
-You can import these files in your scripts with `use <MCAD/*.scad>`, but some
-files include useful constants which will be available with `include <MCAD/*.scad>`,
+You can import these files in your scripts with `use <MCAD/*.py>`, but some
+files include useful constants which will be available with `include <MCAD/*.py>`,
 which should be safe to use on all included files (ie. no top level code should
 create geometry). (There is a bug/feature that prevents including constants from
 files that "include" other files - see the openscad mailing list archives for more
@@ -30,37 +30,49 @@ Currently Provided Tools:
     - bevel_gear()
     - bevel_gear_pair()
 
-* gears.scad (Old version):
+* gears.py (Old version):
     - gear(number_of_teeth, circular_pitch OR diametrial_pitch, pressure_angle OPTIONAL, clearance OPTIONAL)
 
-* motors.scad:
+* motors.py:
     - stepper_motor_mount(nema_standard, slide_distance OPTIONAL, mochup OPTIONAL)
 
 Other tools (alpha and beta quality):
 
-* nuts_and_bolts.scad: for creating metric and imperial bolt/nut holes
-* bearing.scad: standard/custom bearings
-* screw.scad: screws and augers
-* materials.scad: color definitions for different materials
-* stepper.scad: NEMA standard stepper outlines
-* servos.scad: servo outlines
-* boxes.scad: box with rounded corners
-* triangles.scad: simple triangles
+* nuts_and_bolts.py: for creating metric and imperial bolt/nut holes
+* bearing.py: standard/custom bearings
+* screw.py: screws and augers
+* materials.py: color definitions for different materials
+* stepper.py: NEMA standard stepper outlines
+* servos.py: servo outlines
+* boxes.py: box with rounded corners
+* triangles.py: simple triangles
 
 Very generally useful functions and constants:
 
-* math.scad: general math functions
-* constants.scad: mathematical constants
-* curves.scad: mathematical functions defining curves
-* units.scad: easy metric units
-* utilities.scad: geometric funtions and misc. useful stuff
-* teardrop.scad (http://www.thingiverse.com/thing:3457): parametric teardrop module
-* shapes.scad: simple shapes by Catarina Mota
+* mcadmath.py: general math functions
+* constants.py: mathematical constants
+* curves.py: mathematical functions defining curves
+* units.py: easy metric units
+* utilities.py: geometric funtions and misc. useful stuff
+* teardrop.py (http://www.thingiverse.com/thing:3457): parametric teardrop module
+* shapes.py: simple shapes by Catarina Mota
+* regular_shapes.py: regular shapes
+* hardware.py
+* metric_fasteners.py
+* gridbeam.py
+* height_map.py
+
+Bitmap library:
+
+* bitmap.py
+* letter_necklace.py
+* name_tag.py
+* alphabet_block.py
 
 External utils that generate and and process openscad code:
 
-* openscad_testing.py: testing code, see below
-* openscad_utils.py: code for scraping function names etc.
+* openscadpy_testing.py: testing code, see below
+* openscadpy_utils.py: code for scraping function names etc.
 
 ## Development ##
 
@@ -85,5 +97,5 @@ inside the lib dir in a terminal and you should see a part of the tests passing
 and tracebacks for failing tests. It's very simplistic still, but it should test
 that no syntax errors occur at least.
 
-The code is included in openscad_testing.py, and can be imported to be
+The code is included in openscadpy_testing.py, and can be imported to be
 used in other codebases.

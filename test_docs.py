@@ -12,6 +12,6 @@ def pytest_generate_tests(metafunc):
                 metafunc.addcall(funcargs=dict(filename=fpath.basename))
 
 def test_README(filename):
-    README = dirpath.join('README').read()
+    README = dirpath.join('README.markdown').read()
 
     assert filename in README
